@@ -28,6 +28,7 @@
   "format": "amd",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozilla/pdfjs-dist"
-  }
+    "url": "https://github.com/UjinKosy/pdfjs-dist"
+  },
+  "module": "https://github.com/UjinKosy/pdfjs-dist/commit/710b73e668168231f6e4cabfa287c697134b9dad"
 }
