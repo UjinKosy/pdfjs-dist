@@ -4323,7 +4323,8 @@ function () {
     key: "_calculateWordMatch",
     value: function _calculateWordMatch(query, pageIndex, pageContent, entireWord) {
       var matchesWithLength = [];
-      var queryArray = query.match(/\S+/g);
+      var queryArray = query;
+      //var queryArray = query.match(/\S+/g);
 
       for (var i = 0, len = queryArray.length; i < len; i++) {
         var subquery = queryArray[i];
@@ -4370,7 +4371,7 @@ function () {
 
       if (!caseSensitive) {
         pageContent = pageContent.toLowerCase();
-        query = query.toLowerCase();
+        query = query.map(word => word.toLowerCase());
       }
 
       if (phraseSearch) {
@@ -4717,7 +4718,8 @@ function () {
     get: function get() {
       if (this._state.query !== this._rawQuery) {
         this._rawQuery = this._state.query;
-        this._normalizedQuery = normalize(this._state.query);
+        this._normalizedQuery =  this._state.query.map(word => normalize(word));
+        // normalize(this._state.query);
       }
 
       return this._normalizedQuery;
