@@ -4419,7 +4419,7 @@ function () {
   }, {
     key: "_calculateMatch",
     value: function _calculateMatch(pageIndex) {
-      let pageContentOrig = this.pageContents[pageIndex];
+      let pageContentOrig = this._pageContents[pageIndex];
       let [pageContent, pageContentDiffs] = normalize(pageContentOrig);
 
       // var pageContent = this._pageContents[pageIndex];
@@ -4489,7 +4489,7 @@ function () {
               strBuf.push(textItems[j].str);
             }
 
-            _this2._pageContents[i] = normalize(strBuf.join(''));
+            _this2._pageContents[i] = normalize(strBuf.join('')).join('');
             extractTextCapability.resolve(i);
           }, function (reason) {
             console.error("Unable to get text content for page ".concat(i + 1), reason);
@@ -4782,7 +4782,7 @@ function () {
     get: function get() {
       if (this._state.query !== this._rawQuery) {
         this._rawQuery = this._state.query;
-        this._normalizedQuery =  this._state.query.map(word => normalize(word));
+        this._normalizedQuery =  this._state.query.map(word => normalize(word).join(''));
         // normalize(this._state.query);
       }
 
